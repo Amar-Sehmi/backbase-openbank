@@ -12,21 +12,15 @@ public abstract class ObjectMapperUtil {
 
     private static final Logger LOG = LogManager.getLogger(ObjectMapperUtil.class);
 
-    private static final ObjectMapper mapper;
-
-    static {
-        mapper = new ObjectMapper()
+    public static ObjectMapper getInstance() {
+        return new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .enable(SerializationFeature.INDENT_OUTPUT);
     }
 
-    public static ObjectMapper getInstance() {
-        return mapper;
-    }
-
-    public static String getJsonString(Object object) {
+    public static <T> String getJsonString(T object) {
         try {
-            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+            return getInstance().writerWithDefaultPrettyPrinter().writeValueAsString(object);
         } catch (JsonProcessingException e) {
             LOG.error("Failed to parse Response", e);
         }
@@ -34,8 +28,7 @@ public abstract class ObjectMapperUtil {
         return null;
     }
 
-    @SuppressWarnings("rawtypes")
-    public static String convertResponseToJson(ResponseEntity response) {
+    public static <T> String convertResponseToJson(ResponseEntity<T> response) {
         return "\n----------- Response -----------\n" +
                 "HTTP Status: " + response.getStatusCode() + "\n" +
                 "Response Body: \n"

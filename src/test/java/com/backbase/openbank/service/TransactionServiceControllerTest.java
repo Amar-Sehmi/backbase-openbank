@@ -5,6 +5,7 @@ import com.backbase.openbank.service.domain.backbase.BackbaseGetTransactionsResp
 import com.backbase.openbank.service.domain.openbank.OpenbankGetTransactionResponse;
 import com.backbase.openbank.service.domain.openbank.Transaction;
 import com.backbase.openbank.service.transaction.GetTransactionsApi;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import mockit.Expectations;
 import mockit.Injectable;
 import mockit.Tested;
@@ -13,6 +14,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -60,6 +62,7 @@ public class TransactionServiceControllerTest {
         try {
             responseEntity = controller.getTransactions(null);
         } catch (Exception e) {
+            e.printStackTrace();
             Assert.fail("should not have thrown exception");
         }
 

@@ -103,7 +103,7 @@ public class GetTransactionsApiTest {
         try {
             getTransactionsApi.getTransactions();
             Assert.fail("should have thrown exception");
-        } catch (Exception be) {
+        } catch (BackbaseException be) {
             Assert.assertEquals("Failure to invoke OpenBank Transaction API: blah", be.getMessage());
         }
     }
