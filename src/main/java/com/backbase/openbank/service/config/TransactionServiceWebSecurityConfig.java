@@ -45,7 +45,7 @@ public class TransactionServiceWebSecurityConfig extends WebSecurityConfigurerAd
         http.authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin().defaultSuccessUrl("/swagger-ui.html", true)
                 .and()
                 .sessionManagement().sessionFixation().newSession();
     }
