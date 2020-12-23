@@ -24,7 +24,7 @@
         <log4j2-version>2.9.1</log4j2-version>
         <springfox-swagger-version>2.9.2</springfox-swagger-version>
         <javax-servlet-api-version>4.0.1</javax-servlet-api-version>
-        <jackson-databind-version>2.9.10</jackson-databind-version>
+        <jackson-databind-version>2.9.9</jackson-databind-version>
         <tomcat-embed-version>7.0.100</tomcat-embed-version>
         <junit-version>4.13</junit-version>
         <apache-commons-lang-version>3.9</apache-commons-lang-version>
